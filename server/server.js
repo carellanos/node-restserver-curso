@@ -1,5 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+//Paquete de node por defecto  (path)
+const path = require('path');
+
+
 const app = express();
 
 
@@ -15,6 +19,9 @@ app.use(bodyParser.json());
 
 //Configuracion global de rutas
 app.use(require('./routes/index'));
+
+//Habilitar la carpeta public
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 //********** Conexion a la Base de Datos MongoDB ******************************************
 //Port= 27017, Nombre de BD= cafe
